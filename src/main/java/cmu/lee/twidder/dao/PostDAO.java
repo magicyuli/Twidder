@@ -35,6 +35,10 @@ public class PostDAO {
                     "AND deleted = FALSE " +
                     "AND MATCH(content) AGAINST(:search IN BOOLEAN MODE) " +
                     "ORDER BY created_at DESC";
+    private static final String DELETE_POST_BY_ID_SQL =
+            "UPDATE posts SET deleted = TRUE WHERE id = :id";
+    private static final String GET_POST_BY_ID_SQL =
+            "SELECT * FROM posts WHERE id = :id";
 
     private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -79,5 +83,18 @@ public class PostDAO {
         }
 
         return posts;
+    }
+
+    public void deleteById(Post post) {
+        MapSqlParameterSource namedParams = new MapSqlParameterSource();
+        namedParams.addValue("id", post.getId());
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(GET_POST_BY_ID_SQL, namedParams);
+
+        if (!rowSet.next()) {
+            return;
+        }
+
+        jdbcTemplate.update(DELETE_POST_BY_ID_SQL, namedParams);
     }
 }

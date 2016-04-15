@@ -31,6 +31,10 @@ public class Post {
         this.deleted = deleted;
     }
 
+    public Post(Long postId) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

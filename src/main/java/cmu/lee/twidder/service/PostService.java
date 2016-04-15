@@ -34,4 +34,8 @@ public class PostService {
     public List<Post> getAllRelatedPosts(User user, String search) {
         return postDAO.getAllRelatedPosts(user, search);
     }
+
+    public void deletePost(Post post) {
+        postDAO.deleteById(post);
+    }
 }

@@ -11,13 +11,11 @@
                http://www.springframework.org/schema/context
                http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="cmu.lee.twidder" />
+    <context:component-scan base-package="cmu.lee.twidder.controller" />
+    <!--<context:component-scan base-package="cmu.lee.twidder.util" />-->
 
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven />
-
-    <!-- Forwards requests to the "/" resource to the "welcome" view -->
-    <!--<mvc:view-controller path="/" view-name="index" />-->
 
     <!-- Handles HTTP GET requests for /static/** by efficiently serving up static resources in the ${webappRoot}/static/ directory -->
     <mvc:resources mapping="/static/**" location="/static/" />

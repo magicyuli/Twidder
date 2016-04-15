@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://www.springframework.org/schema/mvc
+               http://www.springframework.org/schema/mvc/spring-mvc.xsd
+               http://www.springframework.org/schema/context
+               http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="cmu.lee.twidder.controller" />
+    <context:component-scan base-package="cmu.lee.twidder.util" />
+    <!--<context:component-scan base-package="cmu.lee.twidder.service" />-->
+    <!--<context:component-scan base-package="cmu.lee.twidder.dao" />-->
+
+    <!--<mvc:annotation-driven />-->
+
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">-->
+        <!--<property name="driverClass" value="${jdbc.driverClassName}"/>-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
+        <!--<property name="user" value="${jdbc.username}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+    <!--</bean>-->
+
+    <bean id="testUserService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg name="classToMock" value="cmu.lee.twidder.service.UserService" />
+    </bean>
+
+
+
+</beans>

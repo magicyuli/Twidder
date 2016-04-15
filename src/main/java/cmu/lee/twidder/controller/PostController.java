@@ -55,4 +55,20 @@ public class PostController {
 
         return postService.getAllRelatedPosts(me, search);
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxBasicReturn getAllRelatedPosts(@RequestBody Post post,
+                                         @ModelAttribute("me") User me) {
+        try {
+            postService.deletePost(post);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+
+            return new AjaxBasicReturn(false, e.getMessage());
+        }
+
+        return new AjaxBasicReturn(true, "");
+    }
 }
